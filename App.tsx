@@ -52,10 +52,10 @@ export default function App() {
       onPress={send}
       >
         <Text style={styles.buttonText}>{loading ? 'Думает...' : 'Отправить'}</Text>
+      </Pressable>
         {reply && (
           <Text style={styles.reply}>{reply}</Text>
         )}
-      </Pressable>
     </View>
   );
 }
