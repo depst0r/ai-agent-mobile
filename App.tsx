@@ -51,7 +51,10 @@ export default function App() {
       disabled={loading}
       onPress={send}
       >
-        <Text style={styles.buttonText}>Отправить</Text>
+        <Text style={styles.buttonText}>{loading ? 'Думает...' : 'Отправить'}</Text>
+        {reply && (
+          <Text style={styles.reply}>{reply}</Text>
+        )}
       </Pressable>
     </View>
   );

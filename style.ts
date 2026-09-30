@@ -22,4 +22,10 @@ export const styles = StyleSheet.create({
   buttonText: {
     color: '#fff',
   },
+  reply: {
+  marginTop: 20,
+  padding: 10,
+  width: '80%',
+  color: '#fff',
+},
 })
