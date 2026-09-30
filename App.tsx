@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import { Text, View, TextInput, Pressable } from 'react-native';
 import { styles } from './style';
-
+import { AGENTS } from './lib/agents';
 
 export default function App() {
 
   const [message, setMessage] = useState('')
   const [reply, setReply] = useState('')
   const [loading, setLoading] = useState(false)
+  const [agent, setAgent] = useState('disigner')
 
   const send = async () => {
     setLoading(true)
