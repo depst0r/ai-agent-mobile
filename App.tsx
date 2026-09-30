@@ -1,10 +1,18 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Pressable } from 'react-native';
+import { styles } from './style';
+
 
 export default function App() {
+
+  const [message, setMessage] = useState('')
+
+
   return (
     <View style={styles.container}>
       <TextInput
+      value={message}
+      onChangeText={setMessage}
       placeholder='Напиши задание...'
       style={styles.input}
       ></TextInput>
@@ -17,26 +25,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  input: {
-  borderWidth: 1,
-  borderColor: '#ccc',
-  padding: 10,
-  width: '80%',
-  marginBottom: 10,
-},
-button: {
-  backgroundColor: '#333',
-  padding: 12,
-  paddingHorizontal: 24,
-},
-buttonText: {
-  color: '#fff',
-},
-});
