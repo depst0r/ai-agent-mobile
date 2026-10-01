@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Text, View, TextInput, Pressable } from 'react-native';
+import { Text, View, TextInput, Pressable, ScrollView } from 'react-native';
 import { styles } from './style';
 import { AGENTS } from './lib/agents';
 
@@ -41,7 +41,7 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.agentRow}>
     {AGENTS.map(a => (
       <Pressable
@@ -70,6 +70,6 @@ export default function App() {
         {reply && (
           <Text style={styles.reply}>{reply}</Text>
         )}
-    </View>
+    </ScrollView>
   );
 }
