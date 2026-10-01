@@ -21,7 +21,7 @@ export default function App() {
       body: JSON.stringify({
         model: 'openai',
         messages: [
-          { role: 'system', content: selected ? selected.prompt : '' }!,
+          { role: 'system', content: selected ? selected.prompt : '' },
           { role: 'user', content: message }
         ]
       })
@@ -42,6 +42,18 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <View style={styles.agentRow}>
+    {AGENTS.map(a => (
+      <Pressable
+        key={a.id}
+        onPress={() => setAgent(a.id)}
+        style={[styles.agentBtn, agent === a.id && styles.agentBtnActive]}
+        >
+          <Text style={[styles.agentText, agent === a.id && styles.agentTextActive]}>{a.name}</Text>
+        </Pressable>
+    ))}
+      </View>
+
       <TextInput
         value={message}
         onChangeText={setMessage}
