@@ -1,7 +1,10 @@
-import { useState } from 'react';
 import { Text, View, TextInput, Pressable, ScrollView } from 'react-native';
-import { styles } from './style';
-import { AGENTS } from './lib/agents';
+import { useState } from 'react';
+import { useFonts, PressStart2P_400Regular } from '@expo-google-fonts/press-start-2p'
+import Markdown from '@ronradtke/react-native-markdown-display'
+import { styles } from './style'
+import { markdownStyles } from './style';
+import { AGENTS } from './lib/agents'
 
 export default function App() {
 
@@ -9,6 +12,12 @@ export default function App() {
   const [reply, setReply] = useState('')
   const [loading, setLoading] = useState(false)
   const [agent, setAgent] = useState('designer')
+  const [fontsLoaded] = useFonts({ PressStart2P_400Regular })
+
+
+  if (!fontsLoaded) {
+    return  <View><Text>Загрузка...</Text></View>
+  }
 
   const send = async () => {
     setLoading(true)
@@ -40,6 +49,7 @@ export default function App() {
 
   }
 
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <View style={styles.agentRow}>
@@ -68,7 +78,9 @@ export default function App() {
         <Text style={styles.buttonText}>{loading ? 'Думает...' : 'Отправить'}</Text>
       </Pressable>
         {reply && (
-          <Text style={styles.reply}>{reply}</Text>
+          <View style={styles.reply}>
+            <Markdown style={markdownStyles}>{reply}</Markdown>
+        </View>
         )}
     </ScrollView>
   );
